@@ -56,6 +56,7 @@ class assemble extends Component {
                     updateUser={this.updateUser}
                     navigator={navigator}
                     user={this.state.user}
+                    logout={this.logout}
                   />
               );
             case 'Register':
