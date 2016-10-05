@@ -616,7 +616,8 @@ export const globals = StyleSheet.create({
     alignItems: 'center'
   },
   lightText: {
-    color: 'white'
+    color: 'white',
+    backgroundColor:'rgba(0,0,0,0)'
   },
   h2: {
     fontSize: 28,
