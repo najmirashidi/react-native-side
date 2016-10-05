@@ -22,6 +22,17 @@ import { globals } from './src/styles';
 
 
 class assemble extends Component {
+    constructor(){
+      super();
+      this.updateUser = this.updateUser.bind(this);
+      this.state = {
+        user: null
+      };
+    }
+    updateUser(user){
+      this.setState({ user: user });
+    }
+
   render() {
     return (
       <Navigator
@@ -35,15 +46,30 @@ class assemble extends Component {
             );
             case 'Dashboard':
               return (
-                <Dashboard navigator={navigator}/>
+                  <Dashboard
+                     updateUser={this.updateUser}
+                     navigator={navigator}
+                     user={this.state.user}
+                   />
             );
             case 'Register':
               return (
                 <Register navigator={navigator} />
             );
+            case 'RegisterConfirmation':
+              return (
+                <RegisterConfirmation
+                  {...route}
+                  updateUser={this.updateUser}
+                  navigator={navigator}
+                />
+            );
             case 'Login':
               return (
-                <Login navigator={navigator} />
+                  <Login
+                    navigator={navigator}
+                    updateUser={this.updateUser}
+                  />
             );
           }
         }}

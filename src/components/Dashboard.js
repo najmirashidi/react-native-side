@@ -23,53 +23,40 @@ import { globals } from '../styles';
 class Dashboard extends Component {
     constructor(props){
         super(props)
-        // this.visitLanding = this.visitLanding.bind(this)
-        // this.goBack = this.goBack.bind(this);
         this.state = {
           selectedTab: 'Activity'
         }
     }
 
-    // visitLanding(){
-    //   this.props.navigator.push({
-    //     name: 'Landing'
-    //   });
-    // }
-    // goBack(){
-    //   this.props.navigator.pop();
-    // }
-
     render(){
-        let titleConfig = { title: 'Dashboard', tintColor: 'white' };
+        let { user } = this.props;
         return(
             <TabBarIOS>
-               <TabBarItemIOS
-                 title='Activity'
-                 selected={this.state.selectedTab === 'Activity'}
-                 iconName='ios-pulse'
-                 onPress={() => this.setState({ selectedTab: 'Activity' })}
-               >
-                 <ActivityView />
-               </TabBarItemIOS>
-
-               <TabBarItemIOS
-                 title='Messages'
-                 selected={this.state.selectedTab === 'Messages'}
-                 iconName='ios-chatboxes'
-                 onPress={() => this.setState({ selectedTab: 'Messages' })}
-               >
-                 <MessagesView />
-               </TabBarItemIOS>
-
-               <TabBarItemIOS
-                 title='Profile'
-                 selected={this.state.selectedTab === 'Profile'}
-                 iconName='ios-person'
-                 onPress={() => this.setState({ selectedTab: 'Profile' })}
-               >
-                 <ProfileView />
-               </TabBarItemIOS>
-             </TabBarIOS>
+                <TabBarItemIOS
+                  title='Activity'
+                  selected={this.state.selectedTab === 'Activity'}
+                  iconName='ios-pulse'
+                  onPress={() => this.setState({ selectedTab: 'Activity' })}
+                >
+                  <ActivityView currentUser={user}/>
+                </TabBarItemIOS>
+                <TabBarItemIOS
+                  title='Messages'
+                  selected={this.state.selectedTab === 'Messages'}
+                  iconName='ios-chatboxes'
+                  onPress={() => this.setState({ selectedTab: 'Messages' })}
+                >
+                  <MessagesView currentUser={user}/>
+                </TabBarItemIOS>
+                <TabBarItemIOS
+                  title='Profile'
+                  selected={this.state.selectedTab === 'Profile'}
+                  iconName='ios-person'
+                  onPress={() => this.setState({ selectedTab: 'Profile' })}
+                >
+                  <ProfileView currentUser={user}/>
+                </TabBarItemIOS>
+              </TabBarIOS>
         )
     }
 }
