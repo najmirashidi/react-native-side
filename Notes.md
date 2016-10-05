@@ -5,3 +5,5 @@ renderScene is a function which expects a component to be returned. We render th
 dataSource: this is the data that the ListView renders. In it's most simple format, this can be an array of data that is converted into a ListView.DataSource.
 
 contentInset: this is the margin for the ListView. We added 49 because of the tab bar at the bottom
+
+Also notice that we use a property called ref. We use this as a callback to later reference the element. In our password input, we use the code -
