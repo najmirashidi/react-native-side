@@ -24,10 +24,15 @@ import { globals } from './src/styles';
 class assemble extends Component {
     constructor(){
       super();
+      this.logout = this.logout.bind(this);
       this.updateUser = this.updateUser.bind(this);
       this.state = {
         user: null
       };
+    }
+    logout(){
+      this.nav.push({ name: 'Landing' });
+      this.updateUser(null);
     }
     updateUser(user){
       this.setState({ user: user });
@@ -35,23 +40,24 @@ class assemble extends Component {
 
   render() {
     return (
-      <Navigator
-        style={globals.flex}
-        initialRoute={{ name: 'Landing' }}
-        renderScene={(route, navigator) => {
-          switch(route.name){
-            case 'Landing':
-              return (
-                <Landing navigator={navigator}/>
-            );
-            case 'Dashboard':
-              return (
+        <Navigator
+          style={globals.flex}
+          ref={(el) => this.nav = el }
+          initialRoute={{ name: 'Landing' }}
+          renderScene={(route, navigator) => {
+            switch(route.name){
+              case 'Landing':
+                return (
+                  <Landing navigator={navigator}/>
+              );
+              case 'Dashboard':
+                return (
                   <Dashboard
-                     updateUser={this.updateUser}
-                     navigator={navigator}
-                     user={this.state.user}
-                   />
-            );
+                    updateUser={this.updateUser}
+                    navigator={navigator}
+                    user={this.state.user}
+                  />
+              );
             case 'Register':
               return (
                 <Register navigator={navigator} />

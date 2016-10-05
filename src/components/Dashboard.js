@@ -23,9 +23,17 @@ import { globals } from '../styles';
 class Dashboard extends Component {
     constructor(props){
         super(props)
+        this.logout = this.logout.bind(this);
         this.state = {
           selectedTab: 'Activity'
         }
+    }
+    logout(){
+      fetch(`${API}/users/logout`, { method: 'POST', headers: Headers })
+      .then(response => response.json())
+      .then(data => this.props.logout())
+      .catch(err => {})
+      .done();
     }
 
     render(){
@@ -48,13 +56,14 @@ class Dashboard extends Component {
                 >
                   <MessagesView currentUser={user}/>
                 </TabBarItemIOS>
+                
                 <TabBarItemIOS
                   title='Profile'
                   selected={this.state.selectedTab === 'Profile'}
                   iconName='ios-person'
                   onPress={() => this.setState({ selectedTab: 'Profile' })}
                 >
-                  <ProfileView currentUser={user}/>
+                  <ProfileView currentUser={user} logout={this.logout}/>
                 </TabBarItemIOS>
               </TabBarIOS>
         )
