@@ -16,6 +16,8 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import Landing from './src/components/Landing';
 import Dashboard from './src/components/Dashboard';
+import Register from './src/components/accounts/Register';
+import Login from './src/components/accounts/Login';
 import { globals } from './src/styles';
 
 
@@ -34,6 +36,14 @@ class assemble extends Component {
             case 'Dashboard':
               return (
                 <Dashboard navigator={navigator}/>
+            );
+            case 'Register':
+              return (
+                <Register navigator={navigator} />
+            );
+            case 'Login':
+              return (
+                <Login navigator={navigator} />
             );
           }
         }}

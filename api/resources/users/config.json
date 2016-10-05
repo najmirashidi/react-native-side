@@ -1,0 +1,45 @@
+{
+	"type": "UserCollection",
+	"properties": {
+		"firstname": {
+			"name": "firstname",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "firstname",
+			"order": 0
+		},
+		"lastname": {
+			"name": "lastname",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "lastname",
+			"order": 1
+		},
+		"location": {
+			"name": "location",
+			"type": "object",
+			"typeLabel": "object",
+			"required": false,
+			"id": "location",
+			"order": 2
+		},
+		"technology": {
+			"name": "technology",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "technology",
+			"order": 3
+		},
+		"avatar": {
+			"name": "avatar",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "avatar",
+			"order": 4
+		}
+	}
+}
